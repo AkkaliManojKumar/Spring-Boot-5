@@ -1,0 +1,69 @@
+-------------->>>.  EUreka server which all microservices are registered here as eureka clients
+------------->>>    to convert microservices as Eureka clients we use Eureka Client 
+------->>> Only Eureka clients can be registered in to the eureka server
+
+
+------------------------------------------------------------- STEP bY STEP process of Eureka server instalation -----------------------------------------
+
+----->> go to start.spring.io 
+----->> download project with 1 dependency (Eureks Server -- spring cloud eureka netflix )
+----->>import to eclipse 
+----->> Inside that file ----- 1) Write Annotation (@EnableEureksServer) -- Over the @SpringBootApplication Annotation
+----->> In the application.properties file write ------>>>>      server.port=8761
+                                                                 eureka.client.register-with-eureka=false      //---->> this says you are eureka server dont register with eureka client client will come and register with you
+                                                                 eureka.client.fetch-registry=false           //----->> dont fetch the eureka clients 
+                                                                 
+  
+  -----------------------------------------------------------
+  Eureka Client instalation
+  
+  
+  -------------->>> Start.spring.io download with 2 dependencies ---- spring web  &&& --- Eureka Discovery Client(SPring cloud discovery client)
+  
+  -------------->>>  download name as eureka client  ----  import 
+  
+  -------------->>> in the pom.xml file of eureka client 
+ 
+ ------->>>client add this dependency in both product and purchase pom.xml
+<properties>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>2021.0.4</spring-cloud.version>  // copy this line and paste in product microservice
+	</properties>   
+  
+  
+  ------- add this dependency in product & purchase pom.xml
+  <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+-------------------- add this dependency to product & purchase pom.xml
+
+<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+  
+
+---------------------->>>> then WTITE @EnableEurekaServer Annotation Above @SpringApplication in Both PRODUCT AND PURCHASE 
+
+
+------------------------------>>>> In the application.properties file of Both product and properties 
+
+server.port=1111
+spring.application.name=product
+
+server.port=5555
+spring.application.name=purchase
+
+  
+  
