@@ -1,3 +1,4 @@
+------------>> eureka server is used to make use instead of using IP addreass we name it with any name and use it 
 -------------->>>.  EUreka server which all microservices are registered here as eureka clients
 ------------->>>    to convert microservices as Eureka clients we use Eureka Client 
 ------->>> Only Eureka clients can be registered in to the eureka server
